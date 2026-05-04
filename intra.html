@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaiFlix - Assista a Séries e Filmes Online</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- FontAwesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Estilos Customizados - Tema Escuro */
+        body {
+            background-color: #141414;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Transparente para Preta */
+        .navbar {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0));
+            transition: background-color 0.3s;
+        }
+        .navbar.scrolled {
+            background-color: #141414;
+        }
+        .navbar-brand {
+            color: #E50914 !important; /* Vermelho clássico */
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-link {
+            color: #e5e5e5 !important;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        /* Hero Section (Filme em Destaque) */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%),
+                        linear-gradient(to top, #141414 0%, rgba(0,0,0,0) 20%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+        .btn-play {
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+        }
+        .btn-play:hover {
+            background-color: rgba(255,255,255,0.7);
+        }
+        .btn-info {
+            background-color: rgba(109, 109, 110, 0.7);
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+            border: none;
+        }
+        .btn-info:hover {
+            background-color: rgba(109, 109, 110, 0.4);
+            color: white;
+        }
+
+        /* Carrossel/Linhas de Filmes */
+        .movie-row {
+            padding: 20px 0;
+        }
+        .movie-row h2 {
+            font-size: 1.4vw;
+            color: #e5e5e5;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-left: 4%;
+        }
+
+        /* Scroll Horizontal suave escondendo a barra */
+        .row-posters {
+            display: flex;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            padding: 20px 4%;
+            gap: 10px;
+            scroll-behavior: smooth;
+        }
+        .row-posters::-webkit-scrollbar {
+            display: none; /* Esconde barra de rolagem no Chrome/Safari */
+        }
+        .row-posters {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        .poster {
+            width: 100%;
+            max-width: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 450ms;
+            cursor: pointer;
+        }
+        .poster:hover {
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 768px) {
+            .movie-row h2 { font-size: 1.2rem; }
+            .hero { height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top px-4" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">VaiFlix</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: none;">
+                <span class="text-white"><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Séries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Filmes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Bombando</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Minha lista</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <i class="fas fa-search text-white" style="cursor: pointer;"></i>
+                    <span class="text-white">Infantil</span>
+                    <i class="fas fa-bell text-white" style="cursor: pointer;"></i>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Perfil" style="width: 32px; border-radius: 4px; cursor: pointer;">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container-fluid px-5 hero-content">
+            <h1 class="display-3 fw-bold mb-3">O Grande Assalto</h1>
+            <p class="lead mb-4 fw-medium text-light" style="max-width: 500px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                Uma equipe de desajustados se une para realizar o maior roubo da história. Assista agora à nova temporada que está parando o Brasil.
+            </p>
+            <div class="d-flex gap-2">
+                <button class="btn btn-play rounded-1"><i class="fas fa-play me-2"></i> Assistir</button>
+                <button class="btn btn-info rounded-1"><i class="fas fa-info-circle me-2"></i> Mais informações</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linha 1: Lançamentos -->
+    <section class="movie-row">
+        <h2>Lançamentos do VaiFlix</h2>
+        <div class="row-posters">
+            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&q=80" alt="Filme" class="poster">
+            <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=500&q=80" alt="Filme" class="poster">
+            <img src="https://images.unsplash.com/photo-1585951237318-9ea5e175b891?w=500&q=80" alt="Filme" class="poster">
+            <img src="poster/shrek.jpg" alt="Filme" class="poster">
+            <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=500&q=80" alt="Filme" class="poster">
+            <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500&q=80" alt="Filme" class="poster">
+            <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=500&q=80" alt="Filme" class="poster">
+        </div>
+    </section>
+
+    <!-- Linha 2: Em Alta -->
+    <section class="movie-row">
+        <h2>Em Alta</h2>
+        <div class="row-posters">
+            <img src="https://images.unsplash.com/photo-1585951237318-9ea5e175b891?w=500&q=80" alt="Filme" class="poster">
+            <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=500&q=80" alt="Filme" class="poster">
+            <img src="poster/shrek2.jpg" alt="Filme" class="poster">
+            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&q=80" alt="Filme" class="poster">
+            <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500&q=80" alt="Filme" class="poster">
+            <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=500&q=80" alt="Filme" class="poster">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-muted py-5 mt-5">
+        <p>&copy; 2026 VaiFlix Brasil. Feito para fins educacionais.</p>
+    </footer>
+
+    <!-- Bootstrap 5 JS e Script Customizado -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Efeito de escurecer a navbar ao rolar a página
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

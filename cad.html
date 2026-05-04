@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaiFlix - Cadastro</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #333;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* Header Simples */
+        .navbar {
+            border-bottom: 1px solid #e6e6e6;
+            padding: 20px 3%;
+        }
+        .navbar-brand {
+            color: #E50914 !important;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .nav-link-login {
+            color: #333;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        .nav-link-login:hover {
+            text-decoration: underline;
+        }
+
+        /* Container de Cadastro */
+        .signup-container {
+            max-width: 440px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .step-indicator {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        /* Estilo dos Inputs (Netflix Style) */
+        .form-floating > .form-control {
+            border: 1px solid #8c8c8c;
+            border-radius: 2px;
+            height: 60px;
+        }
+        .form-floating > label {
+            padding-left: 15px;
+            color: #8c8c8c;
+        }
+
+        .btn-next {
+            background-color: #E50914;
+            color: white;
+            font-size: 1.5rem;
+            padding: 15px;
+            width: 100%;
+            border-radius: 4px;
+            border: none;
+            margin-top: 25px;
+        }
+        .btn-next:hover {
+            background-color: #f6121d;
+            color: white;
+        }
+
+        footer {
+            background-color: #f3f3f3;
+            color: #737373;
+            padding: 30px 0;
+            margin-top: 100px;
+            border-top: 1px solid #e6e6e6;
+        }
+        .footer-link {
+            color: #737373;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Minimalista -->
+    <nav class="navbar d-flex justify-content-between align-items-center">
+        <a href="intra.html" class="navbar-brand">VaiFlix</a>
+        <a href="log.html" class="nav-link-login">Entrar</a>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="signup-container text-start">
+        <span class="step-indicator">Passo <b>1</b> de <b>3</b></span>
+        <h1>Crie uma senha para iniciar sua assinatura</h1>
+        <p>Faltam só alguns passos para você começar a assistir ao VaiFlix. O processo é simples e rápido.</p>
+
+        <form action="log.html">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingEmail" placeholder="nome@exemplo.com" required>
+                <label for="floatingEmail">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" required>
+                <label for="floatingPassword">Adicione uma senha</label>
+            </div>
+
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox" value="" id="offers">
+                <label class="form-check-label text-muted" style="font-size: 0.9rem;" for="offers">
+                    Não, eu não quero receber ofertas especiais do VaiFlix por email.
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-next">Próximo</button>
+        </form>
+    </main>
+
+    <!-- Rodapé Minimalista -->
+    <footer>
+        <div class="container">
+            <p class="mb-4">Dúvidas? Ligue 0800-VAI-FLIX</p>
+            <div class="row">
+                <div class="col-6 col-md-3 mb-2"><a href="#" class="footer-link">FAQ</a></div>
+                <div class="col-6 col-md-3 mb-2"><a href="#" class="footer-link">Central de Ajuda</a></div>
+                <div class="col-6 col-md-3 mb-2"><a href="#" class="footer-link">Termos de Uso</a></div>
+                <div class="col-6 col-md-3 mb-2"><a href="#" class="footer-link">Privacidade</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

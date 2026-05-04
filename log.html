@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaiFlix - Entrar</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Reset e Fontes */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #000;
+        }
+
+        /* Fundo com Imagem e Overlay Escuro */
+        .bg-image {
+            background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/a73c4363-1dcd-4e25-b4b2-5de691ef9e31/2d7a22ab-09b6-4dae-bcbc-b69af3ba271a/BR-pt-20240325-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .bg-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Escurece a imagem de fundo */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header (Apenas a Logo) */
+        .header {
+            padding: 20px 3%;
+        }
+        .navbar-brand {
+            color: #E50914 !important;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        /* Container do Login */
+        .login-wrapper {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .login-box {
+            background-color: rgba(0, 0, 0, 0.75);
+            border-radius: 4px;
+            width: 100%;
+            max-width: 450px;
+            padding: 60px 68px 40px;
+            color: white;
+        }
+
+        .login-box h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+        }
+
+        /* Estilização dos Inputs Customizados */
+        .form-control {
+            background-color: #333 !important;
+            color: white !important;
+            border: none;
+            border-radius: 4px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            background-color: #444 !important;
+            border-bottom: 2px solid #e87c03; /* Detalhe laranja ao clicar */
+        }
+        .form-control::placeholder {
+            color: #8c8c8c;
+        }
+
+        /* Botão Entrar */
+        .btn-login {
+            background-color: #E50914;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 16px;
+            border-radius: 4px;
+            width: 100%;
+            border: none;
+            margin-top: 24px;
+            transition: background-color 0.2s;
+        }
+        .btn-login:hover {
+            background-color: #c90812;
+            color: white;
+        }
+
+        /* Links e Textos Auxiliares */
+        .helper-text {
+            color: #b3b3b3;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .helper-text a {
+            color: #b3b3b3;
+            text-decoration: none;
+        }
+        .helper-text a:hover {
+            text-decoration: underline;
+        }
+        
+        .form-check-input {
+            background-color: #737373;
+            border: none;
+        }
+        .form-check-input:checked {
+            background-color: #E50914;
+        }
+
+        .signup-section {
+            margin-top: 60px;
+            color: #737373;
+            font-size: 1rem;
+        }
+        .signup-section a {
+            color: white;
+            text-decoration: none;
+        }
+        .signup-section a:hover {
+            text-decoration: underline;
+        }
+
+        .captcha-terms {
+            font-size: 0.8rem;
+            color: #8c8c8c;
+            margin-top: 15px;
+        }
+        .captcha-terms a {
+            color: #0071eb;
+            text-decoration: none;
+        }
+
+        /* Responsividade para Mobile */
+        @media (max-width: 768px) {
+            .bg-image {
+                background-image: none; /* No mobile, o fundo é preto sólido */
+                background-color: #000;
+            }
+            .bg-overlay {
+                background: none;
+            }
+            .login-box {
+                background-color: transparent;
+                padding: 20px 0;
+            }
+            .header {
+                padding: 15px 5%;
+            }
+            .login-box h1 {
+                margin-bottom: 20px;
+            }
+            .signup-section {
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-image">
+        <div class="bg-overlay">
+            <!-- Logo Topo Esquerda -->
+            <header class="header">
+                <a href="intra.html" class="navbar-brand">VaiFlix</a>
+            </header>
+
+            <!-- Caixa de Login Centralizada -->
+            <main class="login-wrapper">
+                <div class="login-box">
+                    <h1>Entrar</h1>
+                    
+                    <form action="intra.html">
+                        <input type="email" class="form-control" placeholder="Email ou número de celular" required>
+                        <input type="password" class="form-control" placeholder="Senha" required>
+                        
+                        <button type="submit" class="btn btn-login">Entrar</button>
+                        
+                        <div class="helper-text mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="rememberMe" checked>
+                                <label class="form-check-label" for="rememberMe">
+                                    Lembre-se de mim
+                                </label>
+                            </div>
+                            <a href="#">Precisa de ajuda?</a>
+                        </div>
+                    </form>
+
+                    <!-- Textos do Rodapé do Login -->
+                    <div class="signup-section">
+                        Novo por aqui? <a href="#">Cadastre-se</a>
+                    </div>
+                    
+                    <div class="captcha-terms">
+                        Esta página é protegida pelo Google reCAPTCHA para garantir que você não é um robô. <a href="#">Saiba mais.</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>
